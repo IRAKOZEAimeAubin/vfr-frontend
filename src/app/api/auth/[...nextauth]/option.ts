@@ -20,14 +20,35 @@ export const options: NextAuthOptions = {
             },
             async authorize ( credentials ) {
                 const res = await axios.post( '/auth/login/', credentials );
-                const token = res.data.accessToken;
+                const user = res.data;
           
-                if ( res.status === 201 && token ) {
-                    return token;
+                if ( res.status === 201 && user ) {
+                    return user;
                 }
-                console.log(res)
                 return null;
             },
         } ),
     ],
+    callbacks: {
+        async jwt ( { token, user } ) {
+            if ( user ) {
+                if ( user.accessToken ) {
+                    token = {
+                        id: user.id,
+                        name: user.name,
+                        username: user.username,
+                        accessToken: user.accessToken,
+                    };
+                }
+            }
+            return token;
+        },
+        async session ( { session, token } ) {
+            session.accessToken = token.accessToken;
+            session.id = token.id
+            session.username = token.username;
+
+            return session;
+        }
+    }
 };

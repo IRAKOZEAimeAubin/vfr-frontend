@@ -1,10 +1,1 @@
 export { default } from 'next-auth/middleware';
-
-export const config = {
-    matcher: [
-        '/members',
-        '/loans',
-        '/loanTypes',
-        '/savings'
-    ]
-}
