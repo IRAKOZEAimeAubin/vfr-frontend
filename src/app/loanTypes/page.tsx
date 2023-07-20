@@ -1,3 +1,3 @@
 export default async function LoanTypes() {
-  return <h1>There should be loan types here</h1>
+  return <h1>LoanTypes under construction</h1>
 }
