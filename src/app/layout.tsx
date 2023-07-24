@@ -1,7 +1,6 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Montserrat, Roboto_Mono, Lora } from 'next/font/google'
-import Dashboard from './dashboard/page';
 
 const montserrat = Montserrat( {
   subsets: [ 'latin' ],
@@ -34,7 +33,6 @@ export default function RootLayout({
   return (
     <html lang='en' className={`${ montserrat.variable } ${ robotoMono.variable } ${ lora.variable }`}>
       <body>
-        <Dashboard />
         {children}
       </body>
     </html>
