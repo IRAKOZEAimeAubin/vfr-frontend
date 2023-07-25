@@ -6,6 +6,6 @@ export default async function Home () {
   console.log( session )
 
   return (
-    <h1>Hello, VFR!</h1>
+    <h1 className='font-semibold'>{session.user.name}</h1>
   )
 }
