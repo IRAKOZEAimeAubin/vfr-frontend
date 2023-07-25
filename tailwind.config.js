@@ -11,7 +11,10 @@ module.exports = {
         sans: [ 'var(--font-montserrat)' ],
         mono: [ 'var(--font-roboto-mono)' ],
         serif: [ 'var(--font-lora)' ]
-      }
+      },
+      colors: {
+        'vfr': '#FF6602',
+      },
     }
   },
   plugins: [
