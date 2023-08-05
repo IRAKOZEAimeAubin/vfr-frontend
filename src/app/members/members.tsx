@@ -4,7 +4,7 @@ import {useQuery} from '@tanstack/react-query'
 import getMembers from '../services/getMembers'
 import { MemberType } from '../types/Member';
 
-export default function Members ( { token }: { token: string; } ) {
+export default function MembersTable ( { token }: { token: string; } ) {
 
   const {data, isLoading, error} = useQuery<MemberType[]>({
     queryFn: () => getMembers(token),
