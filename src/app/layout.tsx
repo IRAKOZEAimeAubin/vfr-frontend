@@ -7,6 +7,7 @@ import {
   PiCoinsDuotone,
   PiMoneyDuotone,
   PiUserGearDuotone,
+  PiChartLineUpDuotone,
 } from 'react-icons/pi'
 import Link from 'next/link'
 import getSession from './services/userSession'
@@ -31,7 +32,7 @@ const lora = Lora({
 })
 
 export const metadata: Metadata = {
-  title: 'VFR',
+  title: 'SMS',
   description: 'Employees savings and small loans management system.',
 }
 
@@ -47,7 +48,7 @@ export default async function RootLayout ( { children }: { children: React.React
         <body className='bg-white flex min-h-screen w-screen'>
           <aside className='lg:w-72 h-screen border-r border-dashed flex flex-col py-6 px-4'>
             <div className=''>
-              <span className='uppercase text-4xl font-bold text-vfr'>vfr</span>
+              <span className='uppercase text-4xl font-bold text-vfr'>logo</span>
             </div>
             <div>
               <span className='uppercase font-semibold text-xs text-gray-400 p-2 rounded-md hover:text-black transition-all ease-in-out delay-75'>
@@ -66,6 +67,13 @@ export default async function RootLayout ( { children }: { children: React.React
               >
                 <PiCoinsDuotone className='text-lg hover:text-vfr' />
                 <span className='font-medium'>Savings</span>
+              </Link>
+              <Link
+                href='/totalSavings'
+                className='flex items-center gap-3 p-2 rounded-md mb-2 hover:text-vfr hover:bg-vfr/20 transition-all ease-in-out delay-75'
+              >
+                <PiChartLineUpDuotone className='text-lg hover:text-vfr' />
+                <span className='font-medium'>Total Savings</span>
               </Link>
               <Link
                 href='/loans'
