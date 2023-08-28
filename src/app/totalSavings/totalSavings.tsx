@@ -3,16 +3,21 @@
 import {useQuery} from '@tanstack/react-query'
 import {TotalSavings} from '../types/TotalSavings'
 import getTotalSavings from '../services/getTotalSavings'
+import {useState} from 'react'
+import CreateTotalSavings from './createTotalSavings'
 
 export default function TotalSavingsTable({token}: {token: string}) {
+  const [createToggle, setCreateToggle] = useState(false)
+
   const {data, isLoading, error} = useQuery<TotalSavings[]>({
     queryFn: () => getTotalSavings(token),
     queryKey: ['total-savings'],
   })
   if (error) return `${error}`
-    if ( isLoading ) return 'Loading...'
-    
-    return (
+  if (isLoading) return 'Loading...'
+
+  return (
+    <>
       <section className='bg-vfr/5 dark:bg-gray-900 p-3 sm:p-5 rounded-md'>
         <div className='mx-auto max-w-screen-xl px-4 lg:px-12'>
           <div className='bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden'>
@@ -52,6 +57,9 @@ export default function TotalSavingsTable({token}: {token: string}) {
                 <button
                   type='button'
                   className='flex items-center justify-center text-white bg-vfr/70 hover:bg-vfr/80 focus:ring-4 focus:ring-vfr/30 font-medium rounded-lg text-sm px-4 py-2 dark:bg-vfr/60 dark:hover:bg-vfr/70 focus:outline-none dark:focus:ring-vfr/80'
+                  onClick={(e) => {
+                    setCreateToggle(true)
+                  }}
                 >
                   <svg
                     className='h-3.5 w-3.5 mr-2'
@@ -81,6 +89,9 @@ export default function TotalSavingsTable({token}: {token: string}) {
                       Total Amount
                     </th>
                     <th scope='col' className='px-4 py-3'>
+                      Approved By
+                    </th>
+                    <th scope='col' className='px-4 py-3'>
                       <span className='sr-only'>Actions</span>
                     </th>
                   </tr>
@@ -100,6 +111,11 @@ export default function TotalSavingsTable({token}: {token: string}) {
                         {totalSavings.comment}
                       </th>
                       <td className='px-4 py-3'>{totalSavings.amount}</td>
+                      <td className='px-4 py-3'>
+                        {totalSavings.approvedBy
+                          ? totalSavings.approvedBy.name
+                          : 'NULL'}
+                      </td>
                       <td className='px-4 py-3 flex items-center justify-end'>
                         <button
                           id='apple-imac-27-dropdown-button'
@@ -260,5 +276,9 @@ export default function TotalSavingsTable({token}: {token: string}) {
           </div>
         </div>
       </section>
-    )
+      {createToggle && (
+        <CreateTotalSavings token={token} setToggle={setCreateToggle} />
+      )}
+    </>
+  )
 }

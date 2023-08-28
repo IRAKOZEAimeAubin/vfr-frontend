@@ -8,7 +8,7 @@ import {AxiosError} from 'axios'
 import toast, {Toaster} from 'react-hot-toast'
 import {PiXBold} from 'react-icons/pi'
 
-type CreateProps = {
+export type CreateProps = {
   setToggle: (toggle: boolean) => void
   token: string
 }

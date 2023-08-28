@@ -92,7 +92,7 @@ export default function LoanTypesTable({token}: {token: string}) {
                 {data?.map((loanType) => (
                   <tr
                     className='bg-white border-b dark:border-gray-700'
-                    key={loanType.id}
+                    key={loanType.loanId}
                   >
                     <th
                       scope='row'
