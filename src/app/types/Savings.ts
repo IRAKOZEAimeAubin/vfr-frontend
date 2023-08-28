@@ -1,6 +1,6 @@
 import {MemberType} from './Member'
 
-export type SavingsType = {
+export interface SavingsType {
   id: string
   previousSavings: number
   currentSavings: number

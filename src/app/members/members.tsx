@@ -83,6 +83,9 @@ export default function MembersTable({token}: {token: string}) {
                 <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400'>
                   <tr>
                     <th scope='col' className='px-4 py-3'>
+                      Member Id
+                    </th>
+                    <th scope='col' className='px-4 py-3'>
                       Member Name
                     </th>
                     <th scope='col' className='px-4 py-3'>
@@ -111,8 +114,9 @@ export default function MembersTable({token}: {token: string}) {
                         scope='row'
                         className='px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white'
                       >
-                        {member.name}
+                        {member.regNumber}
                       </th>
+                      <td className='px-4 py-3'>{member.name}</td>
                       <td className='px-4 py-3'>{member.department}</td>
                       <td className='px-4 py-3'>{member.phone}</td>
                       <td className='px-4 py-3'>{member.monthlyPledge}</td>
