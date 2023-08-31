@@ -1,4 +1,4 @@
-import './globals.css';
+import './globals.css'
 import type {Metadata} from 'next'
 import {Montserrat, Roboto_Mono, Lora} from 'next/font/google'
 import {
@@ -11,7 +11,8 @@ import {
 } from 'react-icons/pi'
 import Link from 'next/link'
 import getSession from './services/userSession'
-import { QueryWrapper } from './query/queryWrapper';
+import {QueryWrapper} from './query/queryWrapper'
+import Logout from './components/Logout'
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -36,9 +37,13 @@ export const metadata: Metadata = {
   description: 'Employees savings and small loans management system.',
 }
 
-export default async function RootLayout ( { children }: { children: React.ReactNode; } ) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   const session = await getSession()
-  
+
   return (
     <QueryWrapper>
       <html
@@ -48,7 +53,9 @@ export default async function RootLayout ( { children }: { children: React.React
         <body className='bg-white flex min-h-screen w-screen'>
           <aside className='lg:w-72 h-screen border-r border-dashed flex flex-col py-6 px-4'>
             <div className=''>
-              <span className='uppercase text-4xl font-bold text-vfr'>logo</span>
+              <span className='uppercase text-4xl font-bold text-vfr'>
+                logo
+              </span>
             </div>
             <div>
               <span className='uppercase font-semibold text-xs text-gray-400 p-2 rounded-md hover:text-black transition-all ease-in-out delay-75'>
@@ -108,7 +115,7 @@ export default async function RootLayout ( { children }: { children: React.React
               <span className='font-semibold'>
                 Good Day, {session!.user?.name}
               </span>
-              <div>Hello</div>
+              <Logout />
             </nav>
             {children}
           </main>
