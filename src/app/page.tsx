@@ -1,4 +1,3 @@
-import CreateMember from './members/createMember';
 import MembersTable from './members/members';
 import getSession from './services/userSession'
 
