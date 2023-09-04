@@ -1,4 +1,4 @@
-import MembersTable from './members/members';
+import MembersTable from './members/members'
 import getSession from './services/userSession'
 
 export default async function Home() {

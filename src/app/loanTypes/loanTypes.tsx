@@ -3,9 +3,12 @@
 import {useQuery} from '@tanstack/react-query'
 import {LoanTypes} from '../types/LoanTypes'
 import getLoanTypes from '../services/getLoanTypes'
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import {AiFillDelete, AiFillEdit} from 'react-icons/ai'
+import {useState} from 'react'
 
 export default function LoanTypesTable({token}: {token: string}) {
+  const [createToggle, setCreateToggle] = useState(false)
+
   const {data, isLoading, error} = useQuery<LoanTypes[]>({
     queryFn: () => getLoanTypes(token),
     queryKey: ['loan-types'],

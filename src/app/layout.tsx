@@ -50,7 +50,10 @@ export default async function RootLayout({
         lang='en'
         className={`${montserrat.variable} ${robotoMono.variable} ${lora.variable}`}
       >
-        <body className='bg-white flex min-h-screen w-screen'>
+        <body
+          className='bg-white flex min-h-screen w-screen'
+          suppressHydrationWarning={true}
+        >
           <aside className='lg:w-72 h-screen border-r border-dashed flex flex-col py-6 px-4'>
             <div className=''>
               <span className='uppercase text-4xl font-bold text-vfr'>
